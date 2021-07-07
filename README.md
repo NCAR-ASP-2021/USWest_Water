@@ -1,8 +1,8 @@
-# ASP 2021 Machine Learning Tutorial
+# ASP 2021 US West Coast Water Tutorial
 
 Started this repository from the CMIP6 Hackathon Template. Will adapt to ML tutorial. 
 
-[This template](https://github.com/NCAR-ASP-2021/ml_tutorial_asp2021/) provides a starting point for [Machine Learning Tutorial](https://github.com/NCAR-ASP-2021/ml_tutorial_asp2021/) projects.
+[This template](https://github.com/NCAR-ASP-2021/UWWestCoastWater/) provides a starting point for [US West Coast Water Tutorial](https://github.com/NCAR-ASP-2021/UWWestCoastWater) projects.
 
 ### What's included?
 
@@ -16,9 +16,9 @@ Started this repository from the CMIP6 Hackathon Template. Will adapt to ML tuto
 
 Project leads should follow the next four steps. This only needs to be done once.
 
-1. Navigate to https://github.com/NCAR-ASP-2021/ml_tutorial_asp2021/
+1. Navigate to https://github.com/NCAR-ASP-2021/UWWestCoastWater
 2. Click the "Use this template" button
-3. Name your project (consider prepending with "ml_tutorial_asp2021", so something like `ml_tutorial_asp2021-myproject`)
+3. Name your project (consider prepending with "uswestwater_asp2021", so something like `uswestwater_asp2021-myproject`)
 4. Provide a brief description
 5. Tell your teammates where to find your repository and tell them to "Fork" the project.
 
@@ -26,7 +26,7 @@ Once the initial setup is done, everyone will want to clone the repository onto 
 
 1. Open a JupyterLab session on the system you plan to use.
 1. Open a terminal in the JupyterLab environment.
-1. Clone your project: `git clone https://github.com/NCAR-ASP-2021/ml_tutorial_asp2021/`
+1. Clone your project: `https://github.com/NCAR-ASP-2021/UWWestCoastWater`
 1. Get to work!
 
 
