@@ -1,4 +1,4 @@
-name: ASP_ML
+name: ASP_USWest
 channels:
   - anaconda
   - bashtage
@@ -24,9 +24,6 @@ dependencies:
   - cffi=1.14.4=py36h211aa47_0
   - cftime=1.0.3.4=py36hdd07704_1001
   - click=7.1.2=pyh9f0ad1d_0
-  - cryptography=3.4.7=py36hb60f036_0
-  - cudatoolkit=10.1.243=h6bb024c_0
-  - cudnn=7.6.0=cuda10.1_0
   - curl=7.65.3=hbc83047_0
   - cycler=0.10.0=py_2
   - cython=0.29.13=py36he6710b0_0
@@ -139,7 +136,6 @@ dependencies:
   - readline=7.0=h7b6447c_5
   - s3fs=0.3.0=py_0
   - s3transfer=0.3.6=pyhd8ed1ab_0
-  - scikit-learn=0.21.3=py36h22eb022_0
   - scipy=1.3.1=py36he2b7bc3_0
   - setuptools=41.6.0=py36_0
   - shapely=1.7.1=py36h98ec03d_0
@@ -179,8 +175,6 @@ dependencies:
     - grpcio==1.24.3
     - h5py==2.10.0
     - idna==2.8
-    - keras-applications==1.0.8
-    - keras-preprocessing==1.1.0
     - markdown==3.1.1
     - oauthlib==3.1.0
     - opt-einsum==3.1.0
@@ -191,10 +185,6 @@ dependencies:
     - requests-oauthlib==1.2.0
     - rsa==4.0
     - six==1.12.0
-    - tensorboard==2.0.1
-    - tensorflow-estimator==2.0.1
-    - tensorflow-gpu==2.0.0
-    - tensorflow-probability==0.8.0
     - termcolor==1.1.0
     - urllib3==1.25.6
     - werkzeug==0.16.0
