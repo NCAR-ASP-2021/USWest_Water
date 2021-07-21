@@ -1,0 +1,316 @@
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  OBS:
+    description: >-
+      Observations to verify forecasts with. Most variables are from
+      NOAA CPC, but geopotential height gh_500 is from ERA.
+    metadata:
+      sources:
+        - http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.temperature/.daily/
+        - http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.UNIFIED_PRCP/.GAUGE_BASED/.GLOBAL/.v1p0/.extREALTIME/.rain/
+        - add-ERA-link
+      comment: gh_500 from ERA
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/OBS.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+  
+  ECMWF:
+    description: >-
+      S2S hindcasts 2000-2019 of the ECMF model issued by ECMWF in the S2S project
+    metadata:
+      project_paper:
+        authors: Vitart et al.
+        year: 2017
+        title: The Subseasonal to Seasonal (S2S) Prediction Project Database
+        url: https://journals.ametsoc.org/view/journals/bams/98/1/bams-d-16-0017.1.xml
+      model:
+        overview: https://confluence.ecmwf.int/display/S2S/ECMWF+Model
+        paper: still-to-add
+      data:
+        source: https://github.com/ecmwf-lab/climetlab-s2s-ai-challenge
+      initializations:
+        hindcast_type: on-the-fly
+        freq: weekly corresponding to Thursdays in 2020
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/ECMWF.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+      
+  ECCC:
+    description: >-
+      S2S hindcasts 2000-2019 of the cwao model issued by ECCC in the S2S project
+    metadata:
+      project_paper:
+        authors: Vitart et al.
+        year: 2017
+        title: The Subseasonal to Seasonal (S2S) Prediction Project Database
+        url: https://journals.ametsoc.org/view/journals/bams/98/1/bams-d-16-0017.1.xml
+      model:
+        overview: https://confluence.ecmwf.int/display/S2S/ECCC+Model
+        paper: still-to-add
+      data:
+        source: https://github.com/ecmwf-lab/climetlab-s2s-ai-challenge
+      initializations:
+        hindcast_type: on-the-fly
+        freq: weekly corresponding to Thursdays in 2020
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/ECCC.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+      
+  NCEP:
+    description: >-
+      S2S hindcasts 1999-2012 of the CFSv2 model issued by NCEP in the S2S project
+    metadata:
+      project_paper:
+        authors: Vitart et al.
+        year: 2017
+        title: The Subseasonal to Seasonal (S2S) Prediction Project Database
+        url: https://journals.ametsoc.org/view/journals/bams/98/1/bams-d-16-0017.1.xml
+      model:
+        overview: https://confluence.ecmwf.int/display/S2S/NCEP+Model
+        paper: still-to-add
+      data:
+        source: https://github.com/ecmwf-lab/climetlab-s2s-ai-challenge
+      initializations:
+        hindcast_type: on-the-fly
+        freq: weekly corresponding to Thursdays in 2020
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/NCEP.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+      
+  CESM2:
+    description: >-
+      S2S hindcasts 1999-2020 using CESM2 issued by NCAR following the SUBx protocol
+    metadata:
+      project_paper:
+      model:
+        overview: https://www.cesm.ucar.edu/events/wg-meetings/2021/files/system/Richter.pdf
+        paper: still-to-add
+      data:
+        source: https://www.earthsystemgrid.org/dataset/ucar.cgd.cesm2.s2s_hindcasts.html
+      initializations:
+        hindcast_type: fixed
+        freq: weekly starting on Mondays
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/CESM2.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+      
+  CESM1:
+    description: >-
+      S2S hindcasts 1999-2015 using CESM1 issued by NCAR following the SUBx protocol
+    metadata:
+      project_paper:
+        authors: Richter et al.
+        year: 2020
+        title: Subseasonal Prediction with and without a Well-Represented Stratosphere in CESM1
+        url: https://journals.ametsoc.org/view/journals/wefo/35/6/waf-d-20-0029.1.xml
+      model:
+        overview: https://www.cesm.ucar.edu/events/wg-meetings/2018/presentations/amwg/tribbia.pdf
+        paper: still-to-add
+      data:
+        source:
+      initializations:
+        hindcast_type: fixed
+        freq: weekly starting on Wednesdays
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/CESM1.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+      
+  WACCM:
+    description: >-
+      S2S hindcasts 1999-2020 using CESM2/WACCM issued by NCAR following the SUBx protocol
+    metadata:
+      project_paper:
+      model:
+        overview: https://www.cesm.ucar.edu/events/wg-meetings/2021/files/system/Richter.pdf
+        paper: still-to-add
+      data:
+        source: https://www.earthsystemgrid.org/dataset/ucar.cgd.cesm2-waccm.s2s_hindcasts.html
+      initializations:
+        hindcast_type: fixed
+        freq: weekly starting on Mondays
+    parameters:
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/WACCM.{{data}}.{{lead}}.{{dim}}.zarr
+      chunks: auto
+      use_cftime: True
+  
+  cat_edges:
+    description: tercile category edges, computed by notebook add_path
+    parameters:
+      model:
+        description: model or observations
+        type: str
+        default: OBS
+        allowed: [OBS, ECMWF, ECCC, NCEP, CESM2, CESM1, WACCM]
+      data:
+        description: data type
+        type: str
+        default: raw
+        allowed: [raw, anom] # anom for anomaly
+      lead:
+        description: aggregation of leads in forecasts and time in observations
+        type: str
+        default: daily
+        allowed: [daily, biweekly]
+      dim:
+        description: >-
+          dimensionality of the data
+            geospatial contains lon and lat
+            country contains no lon and lat but aggregated data by country
+        type: str
+        default: geospatial
+        allowed: [geospatial, country]
+    driver: zarr
+    args:
+      urlpath: /glade/campaign/mmm/c3we/jaye/S2S_zarr/{{model}}.{{data}}.cat_edges.{{lead}}.{{dim}}.zarr
+      chunks: {'lon':-1 ,'lat':-1, 'dayofyear': -1}
+      use_cftime: True
+      decode_timedelta: False
