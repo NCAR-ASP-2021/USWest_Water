@@ -1,0 +1,10 @@
+gnore jupyter checkpoint files
+.ipynb_checkpoints
+/analysis/.ipynb_checkpoints
+# ignore pycache files
+__pycache__/
+# ignore png files
+*.png
+/fig/*.png
+/out/*
+out/*
